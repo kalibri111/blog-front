@@ -1,0 +1,33 @@
+.card-wrapper {
+    display: flex;
+    flex-grow: 0;
+    flex-direction: row;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: var(--page-color);
+}
+
+.img-wrapper {
+    display: flex;
+    flex-grow: 0;
+    height: 100%;
+    width: 70%;
+}
+
+.description-wrapper {
+    display: flex;
+    flex-grow: 0;
+    height: 100%;
+    width: 30%;
+    flex-direction: column;
+    gap: 5%;
+}
+
+.field-wrapper {
+    display: flex;
+    flex-grow: 0;
+    height: 10%;
+    width: 100%;
+}
