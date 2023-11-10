@@ -10,7 +10,25 @@ function AboutPage() {
     return (
         <MyPage
             content={[
+                <div className="">
+                    <div className="">
 
+                    </div>
+                    <div className="">
+
+                    </div>
+                </div>,
+                <div className="">
+                    <button className="">
+
+                    </button>
+                    <button className="">
+
+                    </button>
+                    <button className="">
+
+                    </button>
+                </div>
             ]}
         />
     )

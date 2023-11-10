@@ -10,7 +10,7 @@ function PhotographerPage() {
     return (
         <MyPage
             content={[
-                <div className="cards-scroll-wrapper">
+                <div className="articles-scroll-wrapper">
                     <Card
                         cameraName="name"
                         lensName="name"
