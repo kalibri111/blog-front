@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 // import Card from "../../components/Card/Card";
 import MyPage from "../../page-style/PageStyle";
 import {me} from "../../img/me.png"
-import {Avatar} from "@mui/material";
+import {Avatar, SvgIcon} from "@mui/material";
 
 function AboutMe() {
     const navigate = useNavigate();
@@ -31,7 +31,6 @@ function AboutMe() {
 
             <div className="about-me-panel-wrapper">
                 <button className="about-me-button">
-
                 </button>
                 <button className="about-me-button">
 
