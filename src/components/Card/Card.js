@@ -15,6 +15,7 @@ function Card(cameraName: string, lensName: string, dateName: string, placeName:
         <div className="card-wrapper">
 
             <div className="img-wrapper">
+                <img src="../../img/me.png" alt=""/>
             </div>
 
             <div className="description-wrapper">

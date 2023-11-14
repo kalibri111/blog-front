@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import * as React from "react";
-import {Redirect} from "react-router-dom";
+// export class Redirect extends React.Component
 // import {Route, Switch} from "react-router-dom";
 import {
     BrowserRouter, Routes, Route,
@@ -11,24 +11,7 @@ import {
 import AboutMe from "./pages/about-me/AboutMe";
 import Developer from "./pages/developer/Developer";
 import Test from "./test/Test";
-
-// function App() {
-//     return (
-//         <div className="App">
-//             <Router>
-//                 <Switch>
-//                     <Route path="/" exact>
-//                         <Redirect to="/about-me" />
-//                     </Route>
-//
-//                     <Route exact path="/about-me" component={<AboutMe/>} />
-//                     {/*<Route path="/photographer" component={<Photographer/>} />*/}
-//                     {/*<Route path="/developer" component={<Developer/>} />*/}
-//                 </Switch>
-//             </Router>
-//         </div>
-//     );
-// }
+import Photographer from "./pages/photographer/Photographer";
 
 function App() {
     // ⛔️ Warning: React.jsx: type is invalid -- expected a string
@@ -44,12 +27,11 @@ function App() {
     // <Provider store={store}>
         <BrowserRouter>
             <Routes>
-                {/*<Route path="/" exact>*/}
-                {/*    <Redirect to="/about-me" />*/}
-                {/*</Route>*/}
-                {/*<Route exact path='/about-me' element={<AboutMe/>} />*/}
-                {/*<Route exact path='/developer' element={<Developer/>} />*/}
-                <Route exact path="/" element={<Test/>} />
+                <Route exact path="/" element={<AboutMe/>} />
+                <Route exact path='/about-me' element={<AboutMe/>} />
+                <Route exact path='/developer' element={<Developer/>} />
+                <Route exact path='/photographer' element={<Photographer/>} />
+                {/*<Route exact path="/" element={<Test/>} />*/}
             </Routes>
         </BrowserRouter>
     // </Provider>

@@ -3,5 +3,6 @@ body {
     --page-background: #FFFFFF;
     --primary-light: #B2FFF6;
     --primary-middle: #28BFB3;
-    --secondary: #FFB954;
+    --secondary-main: #FFB954;
+    --secondary-details: #F9E534;
 }

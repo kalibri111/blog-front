@@ -14,73 +14,61 @@ import {
 } from '@mui/x-data-grid-pro';
 import { useDemoData } from '@mui/x-data-grid-generator';
 import {DataGrid} from "@mui/x-data-grid";
+import {GridRowsProp} from "@mui/x-data-grid-pro";
+import {GridColDef} from "@mui/x-data-grid-pro";
 
 function Test() {
-    const apiRef = useGridApiRef();
+    // const apiRef = useGridApiRef();
+    //
+    // const [coordinates, setCoordinates] = React.useState({
+    //     rowIndex: 0,
+    //     colIndex: 0,
+    // });
+    //
+    // const { data } = useDemoData({
+    //     dataSet: '',
+    //     rowLength: 100,
+    // });
 
-    const [coordinates, setCoordinates] = React.useState({
-        rowIndex: 0,
-        colIndex: 0,
-    });
-
-    const { data } = useDemoData({
-        dataSet: '',
-        rowLength: 100,
-    });
-
-    React.useEffect(() => {
-        const { rowIndex, colIndex } = coordinates;
-        apiRef.current.scrollToIndexes(coordinates);
-        const id = gridExpandedSortedRowIdsSelector(apiRef)[rowIndex];
-        const column = gridVisibleColumnDefinitionsSelector(apiRef)[colIndex];
-        apiRef.current.setCellFocus(id, column.field);
-    }, [apiRef, coordinates]);
-
-
-    const handleCellClick = (params: GridCellParams) => {
-        const rowIndex = gridExpandedSortedRowIdsSelector(apiRef).findIndex(
-            (id) => id === params.id,
-        );
-        const colIndex = gridVisibleColumnDefinitionsSelector(apiRef).findIndex(
-            (column) => column.field === params.field,
-        );
-        setCoordinates({ rowIndex, colIndex });
-    };
+    // React.useEffect(() => {
+    //     const { rowIndex, colIndex } = coordinates;
+    //     apiRef.current.scrollToIndexes(coordinates);
+    //     const id = gridExpandedSortedRowIdsSelector(apiRef)[rowIndex];
+    //     const column = gridVisibleColumnDefinitionsSelector(apiRef)[colIndex];
+    //     apiRef.current.setCellFocus(id, column.field);
+    // }, [apiRef, coordinates]);
 
 
+    // const handleCellClick = (params: GridCellParams) => {
+    //     const rowIndex = gridExpandedSortedRowIdsSelector(apiRef).findIndex(
+    //         (id) => id === params.id,
+    //     );
+    //     const colIndex = gridVisibleColumnDefinitionsSelector(apiRef).findIndex(
+    //         (column) => column.field === params.field,
+    //     );
+    //     setCoordinates({ rowIndex, colIndex });
+    // };
+
+    const rows: GridRowsProp = [
+        { id: 1, col1: 'Hello', col2: 'World', width: '100%', height: '100%' },
+        { id: 2, col1: 'DataGridPro', col2: 'is Awesome' },
+        { id: 3, col1: 'MUI', col2: 'is Amazing' },
+        { id: 4, col1: 'Hello', col2: 'World' },
+        { id: 5, col1: 'DataGridPro', col2: 'is Awesome' },
+        { id: 6, col1: 'MUI', col2: 'is Amazing' },
+        { id: 7, col1: 'Hello', col2: 'World' },
+        { id: 8, col1: 'DataGridPro', col2: 'is Awesome' },
+        { id: 9, col1: 'MUI', col2: 'is Amazing' },
+    ];
+
+    const columns: GridColDef[] = [
+        { field: 'col1', headerName: 'Column 1', width: '100%', height: '100%' },
+        { field: 'col2', headerName: 'Column 2', width: '100%', height: '100%' },
+    ];
 
     return (
-        <Box sx={{ width: '50%', height: '100%'}}>
-        {/*//     <Box sx={{ width: 300, margin: '0 auto 16px' }}>*/}
-        {/*//         <Grid container justifyContent="center">*/}
-        {/*//             <Grid item>*/}
-        {/*//                 <Button onClick={handleClick('top')}>top</Button>*/}
-        {/*//             </Grid>*/}
-        {/*//         </Grid>*/}
-        {/*//         <Grid container textAlign="center">*/}
-        {/*//             <Grid item xs={4}>*/}
-        {/*//                 <Button onClick={handleClick('left')}>left</Button>*/}
-        {/*//             </Grid>*/}
-        {/*//             <Grid item xs={4}>*/}
-        {/*//                 <IconButton*/}
-        {/*//                     color="primary"*/}
-        {/*//                     aria-label="home"*/}
-        {/*//                     onClick={handleClick('home')}*/}
-        {/*//                 >*/}
-        {/*//                     <HomeIcon />*/}
-        {/*//                 </IconButton>*/}
-        {/*//             </Grid>*/}
-        {/*//             <Grid item xs={4}>*/}
-        {/*//                 <Button onClick={handleClick('right')}>right</Button>*/}
-        {/*//             </Grid>*/}
-        {/*//         </Grid>*/}
-        {/*//         <Grid container justifyContent="center">*/}
-        {/*//             <Grid item>*/}
-        {/*//                 <Button onClick={handleClick('bottom')}>bottom</Button>*/}
-        {/*//             </Grid>*/}
-        {/*//         </Grid>*/}
-        {/*//     </Box>*/}
-            <Box sx={{ height: '50%', width: '50%' }}>
+        <Box sx={{ width: '100%', height: '100%'}}>
+            {/*<Box sx={{ height: '50%', width: '50%' }}>*/}
                 {/*<DataGrid AutoGenerateColumns="True"*/}
                 {/*          CanContentScroll="True"*/}
                 {/*          VerticalScrollBarVisibility="Auto"*/}
@@ -88,13 +76,11 @@ function Test() {
                 {/*          columns={}*/}
                 {/*          rows={}>*/}
                 {/*</DataGrid>*/}
-                <DataGridPro
-                    apiRef={apiRef}
-                    onCellClick={handleCellClick}
-                    hideFooter
-                    {...data}
+                <DataGrid
+                    rows={rows}
+                    columns={columns}
                 />
-            </Box>
+            {/*</Box>*/}
         </Box>
     );
 }
