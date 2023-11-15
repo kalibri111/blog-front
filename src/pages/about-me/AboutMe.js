@@ -14,7 +14,7 @@ function AboutMe() {
             <div className="about-me-wrapper">
                 <div className="wrapper">
                     <div className="about-me-img-wrapper">
-                        <Avatar src="../../img/me.png" alt="Example Alt"/>
+                        {/*<Avatar src="../../img/me.png" alt="Example Alt"/>*/}
                     </div>
 
                     <div className="about-me-summary-wrapper">
@@ -30,12 +30,11 @@ function AboutMe() {
             </div>
 
             <div className="about-me-panel-wrapper">
-                <button className="about-me-button">
+                <button className="about-me-button" style={{backgroundImage: 'url("../../img/camera.jpg")'}}>
                 </button>
-                <button className="about-me-button">
-
+                <button className="about-me-button" style={{backgroundImage: 'url("../../img/email.jpg")'}}>
                 </button>
-                <button className="about-me-button">
+                <button className="about-me-button" style={{backgroundImage: 'url("../../img/plane.jpg")'}}>
 
                 </button>
             </div>
