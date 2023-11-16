@@ -3,14 +3,14 @@ import './Card.css';
 import "react-dom"
 // import {useNavigate} from "react-router-dom";
 
-// export interface Card {
+// export interface MyCard {
 //     cameraName: string,
 //     lensName: string,
 //     dateName: string,
 //     placeName: string
 // }
 
-function Card(cameraName: string, lensName: string, dateName: string, placeName: string) {
+function MyCard(cameraName: string, lensName: string, dateName: string, placeName: string) {
     return (
         <div className="card-wrapper">
 
@@ -37,4 +37,4 @@ function Card(cameraName: string, lensName: string, dateName: string, placeName:
 }
 
 
-export default Card;
+export default MyCard;

@@ -3,7 +3,7 @@ import './Article.css';
 import "react-dom"
 // import {useNavigate} from "react-router-dom";
 
-function Article(description: string, text: string) {
+function Article(description, text) {
     return (
         <div className="article-wrapper">
 

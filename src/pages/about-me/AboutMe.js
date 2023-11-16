@@ -2,10 +2,12 @@ import React from 'react';
 import './AboutMe.css';
 import "react-dom"
 import {useNavigate} from "react-router-dom";
-// import Card from "../../components/Card/Card";
+// import MyCard from "../../components/MyCard/MyCard";
 import MyPage from "../../page-style/PageStyle";
 import {me} from "../../img/me.png"
-import {Avatar, SvgIcon} from "@mui/material";
+import {Avatar, Stack, SvgIcon} from "@mui/material";
+import HeaderAppBar from "../../components/HeaderAppBar/HeaderAppBar";
+import FooterFAB from "../../components/footer-fabs/FooterFAB";
 
 function AboutMe() {
     const navigate = useNavigate();
@@ -29,18 +31,14 @@ function AboutMe() {
                 </div>
             </div>
 
-            <div className="about-me-panel-wrapper">
-                <button className="about-me-button" style={{backgroundImage: 'url("../../img/camera.jpg")'}}>
-                </button>
-                <button className="about-me-button" style={{backgroundImage: 'url("../../img/email.jpg")'}}>
-                </button>
-                <button className="about-me-button" style={{backgroundImage: 'url("../../img/plane.jpg")'}}>
-
-                </button>
-            </div>
+            <FooterFAB/>
         </div>
     return (
-        <MyPage content={content}/>
+        <Stack className="full-display">
+            <HeaderAppBar/>
+            {content}
+        </Stack>
+
     )
 }
 

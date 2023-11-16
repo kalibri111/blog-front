@@ -12,6 +12,9 @@ import AboutMe from "./pages/about-me/AboutMe";
 import Developer from "./pages/developer/Developer";
 import Test from "./test/Test";
 import Photographer from "./pages/photographer/Photographer";
+import FooterFAB from "./components/footer-fabs/FooterFAB";
+import FAB from "./components/FAB/FAB";
+import HeaderAppBar from "./components/HeaderAppBar/HeaderAppBar";
 
 function App() {
     // ⛔️ Warning: React.jsx: type is invalid -- expected a string
@@ -23,7 +26,6 @@ function App() {
             <h1>hello world</h1>
         </div>
     return (
-
     // <Provider store={store}>
         <BrowserRouter>
             <Routes>
