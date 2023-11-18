@@ -11,9 +11,12 @@ import PhotoCard from "../../components/PhotoCard/PhotoCard";
 function PhotographerPage() {
     // const navigate = useNavigate();
     const content= [
-            <div className="articles-scroll-wrapper">
+            <Stack className="content-holder">
                 {PhotoCard("name", "name", "name", "name")}
-            </div>
+            </Stack>
+            // <div className="articles-scroll-wrapper">
+            //     {PhotoCard("name", "name", "name", "name")}
+            // </div>
             ]
     return (
         <Stack className="full-display" spacing={3}>

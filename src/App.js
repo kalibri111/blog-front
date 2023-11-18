@@ -15,6 +15,7 @@ import Photographer from "./pages/photographer/Photographer";
 import FooterFAB from "./components/footer-fabs/FooterFAB";
 import FAB from "./components/FAB/FAB";
 import HeaderAppBar from "./components/HeaderAppBar/HeaderAppBar";
+import Login from "./pages/login/Login";
 
 function App() {
     // ⛔️ Warning: React.jsx: type is invalid -- expected a string

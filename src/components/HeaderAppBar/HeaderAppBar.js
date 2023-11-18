@@ -71,6 +71,10 @@ function HeaderAppBar() {
                         <button className="button">
                             Фотография
                         </button>
+
+                        <button className="button">
+                            Login
+                        </button>
                     </div>
                 </Toolbar>
 
