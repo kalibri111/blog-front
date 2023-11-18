@@ -34,6 +34,7 @@ function App() {
                 <Route exact path='/about-me' element={<AboutMe/>} />
                 <Route exact path='/developer' element={<Developer/>} />
                 <Route exact path='/photographer' element={<Photographer/>} />
+                <Route exact path='/login' element={<Login/>} />
                 {/*<Route exact path="/" element={<Test/>} />*/}
             </Routes>
         </BrowserRouter>

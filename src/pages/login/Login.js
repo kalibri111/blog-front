@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 function Login() {
     return (
         <Container className="top-padded">
-            <Paper className="top-padded">
+            <Paper className="top-padded" elevation={3}>
                 <Stack spacing={4}>
                     <Typography variant="h3" color="text.secondary">
                         Мой login для меня

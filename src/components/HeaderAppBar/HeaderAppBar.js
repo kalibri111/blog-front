@@ -1,6 +1,7 @@
 import {alpha, AppBar, Container, InputBase, styled, Toolbar, Typography} from "@mui/material";
 import "./HeaderAppBar.css"
 import SearchIcon from '@mui/icons-material/Search';
+import {useNavigate} from "react-router-dom";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -43,6 +44,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function HeaderAppBar() {
+    const navigate = useNavigate();
     return (
         <AppBar className="secondary-colored" position="static">
             <Container className="secondary-colored" maxWidth="xl">
@@ -60,19 +62,19 @@ function HeaderAppBar() {
                         />
                     </Search>
                     <div className="buttons-wrapper">
-                        <button className="button">
+                        <button className="button"  onClick={() => navigate('/')}>
                             Обо мне
                         </button>
 
-                        <button className="button">
+                        <button className="button" onClick={() => navigate('/developer')}>
                             Разработка
                         </button>
 
-                        <button className="button">
+                        <button className="button" onClick={() => navigate('/photographer')}>
                             Фотография
                         </button>
 
-                        <button className="button">
+                        <button className="button" onClick={() => navigate('/login')}>
                             Login
                         </button>
                     </div>
