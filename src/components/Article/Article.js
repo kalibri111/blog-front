@@ -1,20 +1,25 @@
 // import React from 'react';
 import './Article.css';
 import "react-dom"
+import {List, ListItemText, Paper, Stack, Typography} from "@mui/material";
+import Grid from "@mui/material/Grid";
 // import {useNavigate} from "react-router-dom";
 
 function Article(description, text) {
     return (
-        <div className="article-wrapper">
+        <Paper>
+            <Stack direction="column" spacing={2}>
+                <Typography variant="h5" gutterBottom>
+                    {description}
+                </Typography>
 
-            <div className="description-wrapper">
-                {description}
-            </div>
+                <Typography variant="body1" gutterBottom>
+                    {text}
+                </Typography>
 
-            <div className="text-wrapper">
-                {text}
-            </div>
-        </div>
+
+            </Stack>
+        </Paper>
     )
 }
 

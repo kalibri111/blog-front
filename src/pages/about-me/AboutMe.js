@@ -34,7 +34,7 @@ function AboutMe() {
             <FooterFAB/>
         </div>
     return (
-        <Stack className="full-display">
+        <Stack className="full-display" spacing={3}>
             <HeaderAppBar/>
             {content}
         </Stack>
