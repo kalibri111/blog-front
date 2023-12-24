@@ -1,15 +1,15 @@
 import {List, ListItemText, Paper} from "@mui/material";
 import "./TableOfContent.css"
 
-function TableOfContent() {
+export interface Headers {
+    headers: JSX.Element[]
+}
+
+function TableOfContent(props: Headers) {
     return (
         <Paper>
             <List>
-                <ListItemText primary="Spam" />
-                <ListItemText primary="Spam" />
-                <ListItemText primary="Spam" />
-                <ListItemText primary="Spam" />
-                <ListItemText primary="Spam" />
+                {props.headers}
             </List>
         </Paper>
 

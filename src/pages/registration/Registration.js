@@ -1,24 +1,19 @@
+import "./Registration.css"
 import {Container, Paper, Stack, TextField, Typography} from "@mui/material";
-import "./Login.css"
 import Button from "@mui/material/Button";
-import {useNavigate} from "react-router-dom";
 import {useState} from "react";
+import "../../requests/Client"
 import Client from "../../requests/Client";
-import {
-    globalUserFirstName,
-    globalUserLastName,
-    setUserFirstName,
-    setUserLastName
-} from "../../components/HeaderAppBar/HeaderAppBar";
+import {useNavigate} from "react-router-dom";
 
-function Login() {
+function Registration() {
+
     const navigate = useNavigate();
 
-    const handleRegisterClick = () => {
-        navigate("/register")
-    }
     const [login, setLogin] = useState("")
     const [password, setPassword] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
 
     const handleLoginInput = (event) => {
         if (event.key === "Enter") {
@@ -28,6 +23,20 @@ function Login() {
 
     }
 
+    const handleFirstNameInput = (event) => {
+        if (event.key === "Enter") {
+            console.log(event.target.value)
+            setFirstName(event.target.value)
+        }
+    }
+
+    const handleLastNameInput = (event) => {
+        if (event.key === "Enter") {
+            console.log(event.target.value)
+            setLastName(event.target.value)
+        }
+    }
+
     const handlePasswordInput = (event) => {
         if (event.key === "Enter") {
             console.log(event.target.value)
@@ -35,28 +44,22 @@ function Login() {
         }
     }
 
-    const loginUser = () => {
+    const sighUp = () => {
         if (login === "" || password === "") {
             console.log("no login or password")
             return
         }
 
-        Client.loginUser(login, password)
-            .then(value =>
-                value.json()
-            ).then(value => {
-                Client.getCurrentUser(value.token)
-                    .then(curUserResp => curUserResp.json())
-                    .then(curUserResp => {
-                        console.log("logged in")
-                        console.log(curUserResp)
-                        setUserLastName(curUserResp.LastName)
-                        setUserFirstName(curUserResp.FirstName)
-                        navigate("/")
-                    })
+        console.log(`login: ${login}, password: ${password}`)
+
+        Client.registerNewUser(login, password, firstName, lastName)
+            .then(value => value.text())
+            .then((value) => {
+                console.log(`registered: ${value}`)
+                navigate('/')
             }).catch(
             (reason) => {
-                console.log(`cant login user: ${reason}`)
+                console.log(`cant register user: ${reason}`)
             }
         )
     }
@@ -66,22 +69,23 @@ function Login() {
             <Paper className="top-padded" elevation={3}>
                 <Stack spacing={4}>
                     <Typography variant="h3" color="text.secondary">
-                        Мой login для меня
+                        Зарегестрироваться
                     </Typography>
 
                     <TextField id="standard-basic" label="Логин" variant="standard" onKeyDown={handleLoginInput}/>
 
                     <TextField id="standard-basic" label="Пароль" variant="standard" onKeyDown={handlePasswordInput}/>
 
-                    <Button variant="contained" onClick={loginUser}>Log in</Button>
+                    <TextField id="standard-basic" label="Имя" variant="standard" onKeyDown={handleFirstNameInput}/>
 
-                    <Button variant="contained" onClick={handleRegisterClick}>Registration</Button>
+                    <TextField id="standard-basic" label="Фамилия" variant="standard" onKeyDown={handleLastNameInput}/>
+
+                    <Button variant="contained" onClick={sighUp}>Sign Up</Button>
 
                 </Stack>
             </Paper>
         </Container>
-
     )
 }
 
-export default Login
+export default Registration;

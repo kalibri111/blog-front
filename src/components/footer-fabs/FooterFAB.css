@@ -1,3 +1,7 @@
 .primary-colored {
     background: var(--primary-light) !important;
 }
+
+.padded {
+    padding: 0.5% 0.5% !important;
+}

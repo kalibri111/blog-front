@@ -3,18 +3,17 @@ import './Article.css';
 import "react-dom"
 import {List, ListItemText, Paper, Stack, Typography} from "@mui/material";
 import Grid from "@mui/material/Grid";
+import Markdown from "react-markdown";
+import remarkGfm from 'remark-gfm'
 // import {useNavigate} from "react-router-dom";
 
 function Article(description, text) {
     return (
-        <Paper>
+        <Paper sx={{ p: 2 }}>
             <Stack direction="column" spacing={2}>
-                <Typography variant="h5" gutterBottom>
-                    {description}
-                </Typography>
 
                 <Typography variant="body1" gutterBottom>
-                    {text}
+                    <Markdown remarkPlugins={[remarkGfm]}>{text}</Markdown>
                 </Typography>
 
 

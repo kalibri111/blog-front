@@ -8,7 +8,7 @@
     gap: 5%;
 
     height: 85%;
-    width: 100%;
+    width: 90%;
 
     background-color: var(--primary-light);
 }
@@ -102,13 +102,13 @@
 }
 
 .about-me-summary-wrapper {
-    display: flex;
-    flex-grow: 0;
+    /*display: flex;*/
+    /*flex-grow: 0;*/
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
-    width: 100%;
+    margin: 1em;
+    width: 90%;
     height: 40%;
 
     /*background-color: aquamarine;*/
@@ -122,7 +122,7 @@
     justify-content: center;
     align-items: center;
 
-    width: 100%;
+    width: 90%;
     height: 100%;
 
     /*background-color: bisque;*/

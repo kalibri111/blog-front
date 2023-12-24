@@ -43,6 +43,17 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+export let globalUserFirstName = "Guest"
+export let globalUserLastName = ""
+
+export function setUserFirstName(name: string) {
+    globalUserFirstName = name
+}
+
+export function setUserLastName(name: string) {
+    globalUserLastName = name
+}
+
 function HeaderAppBar() {
     const navigate = useNavigate();
     return (
@@ -50,7 +61,7 @@ function HeaderAppBar() {
             <Container className="secondary-colored" maxWidth="xl">
                 <Toolbar className="secondary-colored" disableGutters>
                     <div className="name-wrapper">
-                        Имя
+                        {globalUserFirstName} {globalUserLastName}
                     </div>
                     <Search>
                         <SearchIconWrapper>

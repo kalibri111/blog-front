@@ -7,7 +7,7 @@ import "./FooterFAB.css"
 
 function FooterFAB() {
     return (
-        <Paper elevation={1} className="primary-colored">
+        <Paper elevation={1} className="primary-colored padded">
             <Stack direction="row" spacing={2}>
                 <FAB icon={<TelegramIcon/>}/>
                 <FAB icon={<InstagramIcon/>}/>
