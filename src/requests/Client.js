@@ -1,3 +1,5 @@
+import {globalUserId, globalUserToken} from "../components/HeaderAppBar/HeaderAppBar";
+
 interface Header {
     "Content-Type": string
 }
@@ -9,7 +11,7 @@ export const ResourceState = {
 }
 
 class Client {
-    static _urlBase = 'http://localhost:4000'
+    static _urlBase = 'http://localhost:8082'
 
     static async getResource(url, method: "POST" | "PUT" | "GET", headers: Header, payload: any, query: any) {
         const data = {
@@ -25,38 +27,73 @@ class Client {
             full_url = `${this._urlBase}${url}`
 
         console.log(`request to ${full_url}`)
-        const res = await fetch(full_url, data)
-            // .then(response => {
-            //     return response.text()
-            // })
+        // .then(response => {
+        //     return response.text()
+        // })
 
-        return res;
+        return await fetch(full_url, data);
     }
 
     static async registerNewUser(login: string, password: string, firstName: string, lastName: string) {
         const user = {
-            Login: login,
-            Password: password,
-            FirstName: firstName,
-            LastName: lastName
+            "Email": login,
+            "Password": password,
+            "FirstName": firstName,
+            "LastName": lastName
         }
-        return this.getResource("/user/register/?", "POST", {
+        return this.getResource("/user/register", "POST", {
             "Content-Type": "application/json",
             "Accept": "application/json",
-        }, null, user)
+        }, JSON.stringify(user), null)
     }
 
     static async loginUser(login: string, password: string) {
         const creds = {
-            Login: login,
+            Email: login,
             Password: password
         }
         return this.getResource(
-            "/user/login/?",
+            "/user/login",
+            "POST",
+            {"Content-Type": "application/json"},
+            JSON.stringify(creds),
+            null
+        )
+    }
+
+    static async getAllTables() {
+        return this.getResource(
+            "/tables/all",
             "GET",
             {"Content-Type": "application/json"},
             null,
-            creds
+            null
+        )
+    }
+
+    static async getFavouriteTables() {
+        return this.getResource(
+            `/user/${globalUserId}/favorites`,
+            "GET",
+            {
+                "Content-Type": "application/json",
+                "Authorization": globalUserToken
+            },
+            null,
+            null
+        )
+    }
+
+    static async markTableAsFavourite(table: number) {
+        return this.getResource(
+            `/user/${globalUserId}/mark/${table}`,
+            "GET",
+            {
+                "Content-Type": "application/json",
+                "Authorization": globalUserToken
+            },
+            null,
+            null
         )
     }
 
@@ -100,11 +137,11 @@ class Client {
         )
     }
 
-    static async getCurrentUser(token: string) {
+    static async getAllUsers() {
         return this.getResource(
-            "/user/protected/",
+            "/user",
             "GET",
-            {"Authorization": `Bearer ${token}`},
+            {"Content-Type": "application/json"},
             null,
             null
         )

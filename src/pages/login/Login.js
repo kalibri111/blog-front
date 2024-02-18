@@ -7,8 +7,8 @@ import Client from "../../requests/Client";
 import {
     globalUserFirstName,
     globalUserLastName,
-    setUserFirstName,
-    setUserLastName
+    setUserFirstName, setUserId,
+    setUserLastName, setUserToken
 } from "../../components/HeaderAppBar/HeaderAppBar";
 
 function Login() {
@@ -42,19 +42,35 @@ function Login() {
         }
 
         Client.loginUser(login, password)
-            .then(value =>
-                value.json()
+            .then(value => {
+                    // Accessing response headers
+                    const auth = value.headers.get('authorization');
+                    console.log(`token: ${auth}`)
+                    setUserToken(auth)
+
+                    return value.json()
+                }
             ).then(value => {
-                Client.getCurrentUser(value.token)
-                    .then(curUserResp => curUserResp.json())
-                    .then(curUserResp => {
-                        console.log("logged in")
-                        console.log(curUserResp)
-                        setUserLastName(curUserResp.LastName)
-                        setUserFirstName(curUserResp.FirstName)
-                        navigate("/")
-                    })
-            }).catch(
+            Client.getAllUsers()
+                .then(curUserResp => {
+
+                    return curUserResp.json()
+                })
+                .then(allUsers => {
+                    const headers = allUsers.headers
+                    console.log(`header: ${JSON.stringify(headers)}`)
+
+
+                    let currUser = allUsers["data"].filter(d => {
+                            return d.Email === login
+                        })[0]
+                    console.log(`hello, ${currUser.FirstName} ${currUser.LastName}`)
+                    setUserLastName(currUser.LastName)
+                    setUserFirstName(currUser.FirstName)
+                    setUserId(currUser.ID)
+                    navigate("/")
+                })
+        }).catch(
             (reason) => {
                 console.log(`cant login user: ${reason}`)
             }
@@ -66,7 +82,7 @@ function Login() {
             <Paper className="top-padded" elevation={3}>
                 <Stack spacing={4}>
                     <Typography variant="h3" color="text.secondary">
-                        Мой login для меня
+                        Логин
                     </Typography>
 
                     <TextField id="standard-basic" label="Логин" variant="standard" onKeyDown={handleLoginInput}/>

@@ -2,6 +2,7 @@ import {alpha, AppBar, Container, InputBase, styled, Toolbar, Typography} from "
 import "./HeaderAppBar.css"
 import SearchIcon from '@mui/icons-material/Search';
 import {useNavigate} from "react-router-dom";
+import Button from "@mui/material/Button";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -46,12 +47,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export let globalUserFirstName = "Guest"
 export let globalUserLastName = ""
 
+export let globalUserId = -1
+
+export let globalUserToken = ""
+
+export function setUserToken(token: string) {
+    globalUserToken = token
+}
+
 export function setUserFirstName(name: string) {
     globalUserFirstName = name
 }
 
 export function setUserLastName(name: string) {
     globalUserLastName = name
+}
+
+export function setUserId(id: number) {
+    globalUserId = id
 }
 
 function HeaderAppBar() {
@@ -63,31 +76,21 @@ function HeaderAppBar() {
                     <div className="name-wrapper">
                         {globalUserFirstName} {globalUserLastName}
                     </div>
-                    <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </Search>
+
                     <div className="buttons-wrapper">
-                        <button className="button"  onClick={() => navigate('/')}>
-                            Обо мне
-                        </button>
 
-                        <button className="button" onClick={() => navigate('/developer')}>
-                            Разработка
-                        </button>
+                        <Button color="inherit" onClick={() => navigate('/')}>
+                            Tурниры
+                        </Button>
 
-                        <button className="button" onClick={() => navigate('/photographer')}>
-                            Фотография
-                        </button>
+                        <Button color="inherit" onClick={() => navigate('/favourites')}>
+                            Избранное
+                        </Button>
 
-                        <button className="button" onClick={() => navigate('/login')}>
-                            Login
-                        </button>
+
+                        <Button color="inherit" onClick={() => navigate('/Login')}>
+                            Log In
+                        </Button>
                     </div>
                 </Toolbar>
 
